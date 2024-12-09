@@ -4,6 +4,7 @@ pragma solidity ^0.8.20;
 import "forge-std/Script.sol";
 import "../src/LSNFT.sol";
 import "../src/Market.sol";
+import "../src/Space.sol";
 
 contract MarketScript is Script {
 
@@ -18,6 +19,9 @@ contract MarketScript is Script {
 
     Market market = new Market(address(nft), payable(feeTo));
     console.log("create market contract: ", address(market));
+
+    Space space = new Space(address(nft));
+    console.log("create space contract: ", address(space));
 
     // nft.setAdmin(address(market));
 
