@@ -1,0 +1,23 @@
+anvil --fork-url https://ethereum-rpc.publicnode.com --auto-impersonate --block-base-fee-per-gas 0 --no-rate-limit --compute-units-per-second 500
+anvil --fork-url https://ethereum-rpc.publicnode.com
+anvil --fork-url https://endpoints.omniatech.io/v1/eth/mainnet/public
+anvil --fork-url https://ethereum-sepolia-rpc.publicnode.com
+anvil --fork-url https://rpc.mevblocker.io
+anvil --fork-url https://eth-mainnet.public.blastapi.io
+
+forge script script/Market.s.sol --rpc-url mainnet_local --account test --broadcast
+forge script script/Market.s.sol --rpc-url sepolia --account dev --broadcast
+
+cast call --rpc-url mainnet_local --account test 0xA3E5DfE71aE3e6DeC4D98fa28821dF355d7244B3 "mint(address,uint256,string)" 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266 777 'www' --trace
+
+cast call --rpc-url mainnet_local --account test 0xA3E5DfE71aE3e6DeC4D98fa28821dF355d7244B3 "balanceOf(address)" 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266 --trace 
+
+cast call --rpc-url mainnet_local --account test 0xA3E5DfE71aE3e6DeC4D98fa28821dF355d7244B3 "ownerOf(uint256)" 777 --trace
+
+cast call 0xA3E5DfE71aE3e6DeC4D98fa28821dF355d7244B3 "burn(uint256)" 777 --trace
+
+cast call 0xA3E5DfE71aE3e6DeC4D98fa28821dF355d7244B3 "owner()"                                                            
+
+cast call 0xA3E5DfE71aE3e6DeC4D98fa28821dF355d7244B3 "setAdmin(address)" 0x69F94e46cbC82Ab02781ac4FaFc3580d21f1a888 --trace --account test
+
+cast call 0xA3E5DfE71aE3e6DeC4D98fa28821dF355d7244B3 "adminOf(address)" 0x69F94e46cbC82Ab02781ac4FaFc3580d21f1a888 
