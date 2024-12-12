@@ -26,7 +26,9 @@ contract Market is ReentrancyGuard, Nonces, EIP712("LSMarket", "1") {
     uint256 public constant VAT_P = 1;
 
     // 1% per day
+    // hold fee to creator
     uint256 public constant HOLD_FEE_C = 1;
+    // hold fee to project
     uint256 public constant HOLD_FEE_P = 1;
 
     // interval: one hour as a unit
